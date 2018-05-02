@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--默认不显示密码-->
+    <item android:drawable="@drawable/icon_register_eye_close" android:state_checked="false" />
+    <!--显示密码-->
+    <item android:drawable="@drawable/icon_register_eye_open" android:state_checked="true" />
+</selector>

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:kevin="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--手机号输入框层-->
+    <RelativeLayout
+        android:id="@+id/mPhoneInputLay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <!--手机图标-->
+        <ImageView
+            android:id="@+id/mPhoneIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/icon_register_phone"
+            android:contentDescription="@string/app_name" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/mPhoneIcon">
+            <!--手机号输入框-->
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/mPhoneInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:hint="@string/register_phone_hint"
+                android:inputType="phone" />
+        </android.support.design.widget.TextInputLayout>
+    </RelativeLayout>
+    <!--密码输入框层-->
+    <RelativeLayout
+        android:id="@+id/mPasswordInputLay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mPhoneInputLay">
+
+        <!--密码输入框图标-->
+        <ImageView
+            android:id="@+id/mPasswordIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/icon_register_password"
+            android:contentDescription="@string/app_name" />
+        <!--密码输入框-->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/mPasswordIcon"
+            kevin:passwordToggleDrawable="@drawable/selector_register_eye"
+            kevin:passwordToggleEnabled="true">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/mPasswordInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:hint="@string/register_password_hint"
+                android:inputType="textPassword" />
+        </android.support.design.widget.TextInputLayout>
+    </RelativeLayout>
+    <!--密码确认输入框层-->
+    <RelativeLayout
+        android:id="@+id/mPasswordConfirmLay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mPasswordInputLay">
+        <!--密码输入框图标-->
+        <ImageView
+            android:id="@+id/mPasswordConfirmIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/icon_register_password"
+            android:contentDescription="@string/app_name" />
+        <!--密码确认输入框-->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/mPasswordConfirmIcon"
+            kevin:passwordToggleDrawable="@drawable/selector_register_eye"
+            kevin:passwordToggleEnabled="true">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/mPasswordConfirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:hint="@string/register_password_hint_again"
+                android:inputType="textPassword" />
+        </android.support.design.widget.TextInputLayout>
+    </RelativeLayout>
+    <!--邀请码输入框层-->
+    <RelativeLayout
+        android:id="@+id/mInvitationInputLay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mPasswordConfirmLay">
+        <!--邀请码图标-->
+        <ImageView
+            android:id="@+id/mInvitationIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/icon_register_invitation"
+            android:contentDescription="@string/app_name" />
+        <!--邀请码输入框-->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/mInvitationIcon">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/mInvitationInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:hint="@string/register_invitation"
+                android:text="e72d9966d54e88874db496facd325391" />
+        </android.support.design.widget.TextInputLayout>
+    </RelativeLayout>
+    <!--验证码层-->
+    <RelativeLayout
+        android:id="@+id/mCodeLay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mInvitationInputLay">
+        <!--验证码图标-->
+        <ImageView
+            android:id="@+id/mCodeIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/icon_register_code"
+            android:contentDescription="@string/app_name" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/mCodeIcon">
+            <!--验证码输入框-->
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="7">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/mCodeInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="10dp"
+                    android:hint="@string/register_code_hint"
+                    android:inputType="numberDecimal" />
+            </android.support.design.widget.TextInputLayout>
+
+            <!--获取验证码按钮-->
+            <Button
+                android:id="@+id/mGetCodeBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="3"
+                android:text="@string/register_get_code" />
+        </LinearLayout>
+    </RelativeLayout>
+    <!--注册按钮-->
+    <Button
+        android:id="@+id/mRegisterBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mCodeLay"
+        android:layout_marginTop="10dp"
+        android:text="@string/register_register_btn" />
+
+</RelativeLayout>

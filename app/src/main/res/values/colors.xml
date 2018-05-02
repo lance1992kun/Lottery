@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <!--首页界面选中颜色-->
+    <color name="main_text_selected">#1296db</color>
+    <!--首页界面未选中颜色-->
+    <color name="main_text_normal">#666666</color>
+    <!--首页界面底部导航栏背景色-->
+    <color name="main_navigation_bar_bg">#F5F5F5</color>
+    <!--分割线颜色-->
+    <color name="main_color_divider">#cecece</color>
+    <!--首页背景色-->
+    <color name="home_background">#F4F4F4</color>
+</resources>
