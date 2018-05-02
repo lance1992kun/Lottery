@@ -18,6 +18,13 @@
             android:background="?attr/colorPrimary"
             android:orientation="vertical"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+            <!--左侧侧滑按钮-->
+            <ImageView
+                android:id="@+id/mLeftIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/icon_main_profile_normal"
+                android:contentDescription="@string/app_name"/>
             <!--居中文字-->
             <TextView
                 android:layout_width="wrap_content"
@@ -38,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/main_color_divider"/>
-        <!--4个模块布局-->
+        <!--3个模块布局-->
         <RadioGroup
             android:id="@+id/mNavigationGroup"
             android:layout_width="match_parent"

@@ -6,6 +6,7 @@ import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -119,6 +120,8 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
             }
         });
+        // 侧滑按钮
+        setOnClick(F((R.id.mLeftIcon)));
         // 标题栏
         Toolbar mToolBar = F(R.id.mToolBar);
         setSupportActionBar(mToolBar);
@@ -151,7 +154,14 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
      */
     @Override
     public void onWidgetClick(View view) {
-
+        switch (view.getId()) {
+            // 侧滑按钮
+            case R.id.mLeftIcon:
+                mDrawerLayout.openDrawer(Gravity.START);
+                break;
+            default:
+                break;
+        }
     }
 
     /**

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/main_color_divider"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_color_divider"
     >
     <!--手机号层-->
     <RelativeLayout
@@ -19,11 +20,22 @@
             android:layout_height="40dp"
             android:layout_marginStart="20dp">
 
+            <ImageView
+                android:id="@+id/mPhoneIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/icon_register_phone"
+                android:contentDescription="@string/app_name"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/mPhoneIcon"
+                android:gravity="center"
                 android:text="@string/register_phone_hint"/>
 
             <TextView
@@ -51,11 +63,22 @@
             android:layout_below="@id/mPhoneLay"
             android:layout_marginStart="20dp">
 
+            <ImageView
+                android:id="@+id/mMemberIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/icon_profile_member"
+                android:contentDescription="@string/app_name"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/mMemberIcon"
+                android:gravity="center"
                 android:text="@string/profile_member"/>
 
             <TextView
@@ -83,11 +106,22 @@
             android:layout_below="@id/mMemberLay"
             android:layout_marginStart="20dp">
 
+            <ImageView
+                android:id="@+id/mInviteIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/icon_register_invitation"
+                android:contentDescription="@string/app_name"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/mInviteIcon"
+                android:gravity="center"
                 android:text="@string/register_invitation"/>
 
             <TextView
@@ -117,11 +151,22 @@
             android:layout_height="40dp"
             android:layout_marginStart="20dp">
 
+            <ImageView
+                android:id="@+id/mSettingIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/icon_profile_setting"
+                android:contentDescription="@string/app_name"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/mSettingIcon"
+                android:gravity="center"
                 android:text="@string/profile_setting"/>
 
             <View
@@ -139,11 +184,22 @@
             android:layout_below="@id/mSettingLay"
             android:layout_marginStart="20dp">
 
+            <ImageView
+                android:id="@+id/mLimitIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/icon_profile_setting"
+                android:contentDescription="@string/app_name"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/mLimitIcon"
+                android:gravity="center"
                 android:text="@string/profile_limit"/>
 
             <TextView
@@ -171,11 +227,22 @@
             android:layout_below="@id/mLimitLay"
             android:layout_marginStart="20dp">
 
+            <ImageView
+                android:id="@+id/mBigLimitIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/icon_profile_setting"
+                android:contentDescription="@string/app_name"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/mBigLimitIcon"
+                android:gravity="center"
                 android:text="@string/profile_big_limit"/>
 
             <TextView
@@ -205,11 +272,22 @@
             android:layout_height="40dp"
             android:layout_marginStart="20dp">
 
+            <ImageView
+                android:id="@+id/mShareIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/icon_profile_share"
+                android:contentDescription="@string/app_name"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/mShareIcon"
+                android:gravity="center"
                 android:text="@string/profile_share"/>
 
             <View
@@ -227,11 +305,22 @@
             android:layout_below="@id/mShareLay"
             android:layout_marginStart="20dp">
 
+            <ImageView
+                android:id="@+id/mAboutIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/icon_profile_about"
+                android:contentDescription="@string/app_name"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/mAboutIcon"
+                android:gravity="center"
                 android:text="@string/profile_about"/>
 
             <View
@@ -249,13 +338,23 @@
             android:layout_below="@id/mAboutLay"
             android:layout_marginStart="20dp">
 
+            <ImageView
+                android:id="@+id/mChargeIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/icon_profile_charge"
+                android:contentDescription="@string/app_name"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/mChargeIcon"
+                android:gravity="center"
                 android:text="@string/profile_charge"/>
-
         </RelativeLayout>
     </RelativeLayout>
     <!--版本层-->
@@ -268,11 +367,22 @@
         android:paddingEnd="0dp"
         android:paddingStart="20dp">
 
+        <ImageView
+            android:id="@+id/mVerIcon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/icon_profile_version"
+            android:contentDescription="@string/app_name"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/mVerIcon"
+            android:gravity="center"
             android:text="@string/profile_version"/>
 
         <TextView

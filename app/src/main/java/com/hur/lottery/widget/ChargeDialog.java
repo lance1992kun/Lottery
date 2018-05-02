@@ -3,6 +3,7 @@ package com.hur.lottery.widget;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import android.text.InputType;
@@ -48,6 +49,8 @@ public class ChargeDialog extends DialogFragment {
         // 输入框
         mEditText = (TextInputEditText) mContentView.findViewById(R.id.mEditText);
         mEditText.setInputType(InputType.TYPE_CLASS_TEXT);
+        TextInputLayout mTextInputLayout = (TextInputLayout) mContentView.findViewById(R.id.mTextInputLayout);
+        mTextInputLayout.setHint("请输入充值密码");
         // 确认按钮
         mContentView.findViewById(R.id.mOkBtn).setOnClickListener(new View.OnClickListener() {
             @Override

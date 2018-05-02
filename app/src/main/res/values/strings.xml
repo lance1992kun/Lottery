@@ -26,7 +26,7 @@
     <string name="profile_charge">充值</string>
     <string name="profile_about">关于</string>
     <string name="profile_version">版本</string>
-    <string name="profile_hint">请输入要修改的数值</string>
+    <string name="profile_hint">请输入……</string>
     <string name="profile_ok">确认</string>
     <string name="profile_cancel">取消</string>
 </resources>

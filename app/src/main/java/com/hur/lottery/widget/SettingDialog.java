@@ -3,6 +3,7 @@ package com.hur.lottery.widget;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import android.view.Gravity;
@@ -52,6 +53,8 @@ public class SettingDialog extends DialogFragment {
         View mContentView = inflater.inflate(R.layout.layout_dialog, container, false);
         // 输入框
         mEditText = (TextInputEditText) mContentView.findViewById(R.id.mEditText);
+        TextInputLayout mTextInputLayout = (TextInputLayout) mContentView.findViewById(R.id.mTextInputLayout);
+        mTextInputLayout.setHint("请输入需要修改的数值");
         // 确认按钮
         mContentView.findViewById(R.id.mOkBtn).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,7 +76,7 @@ public class SettingDialog extends DialogFragment {
         if (type == SettingType.TYPE_LIMIT) {
             String limit = SPUtils.getInstance().getInt(Constant.LIMIT_COUNT, 13) + "";
             mEditText.setText(limit);
-        } else if (type == SettingType.TYPE_BIG_LIMIT){
+        } else if (type == SettingType.TYPE_BIG_LIMIT) {
             String bigLimit = SPUtils.getInstance().getInt(Constant.BIG_LIMIT_COUNT, 23) + "";
             mEditText.setText(bigLimit);
         }
