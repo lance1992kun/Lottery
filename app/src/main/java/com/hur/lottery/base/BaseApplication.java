@@ -124,7 +124,7 @@ public class BaseApplication extends Application {
      */
     private void restartApp() {
         Intent intent = new Intent();
-        intent.setClassName("com.hur.lottery.ui.activity", "com.hur.lottery.ui.activity.SplashActivity");
+        intent.setClassName("com.hur.lottery.ui.activity", "SplashActivity");
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         PendingIntent restartIntent = PendingIntent.getActivity(this, 0, intent, 0);
         AlarmManager manager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);

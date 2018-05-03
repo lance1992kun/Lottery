@@ -28,6 +28,10 @@ public class LotteryApp extends BaseApplication {
      */
     private PushAgent mPushAgent = null;
     /**
+     * 用户是否登录
+     */
+    private boolean isLogin = false;
+    /**
      * 友盟回调
      */
     private IUmengCallback mCallBack = new IUmengCallback() {

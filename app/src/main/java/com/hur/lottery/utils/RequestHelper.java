@@ -1,5 +1,6 @@
 package com.hur.lottery.utils;
 
+import com.blankj.utilcode.util.DeviceUtils;
 import com.blankj.utilcode.util.EncryptUtils;
 import com.blankj.utilcode.util.SPUtils;
 import com.google.gson.Gson;
@@ -28,6 +29,7 @@ public class RequestHelper {
         BaseRequestBean requestBean = new BaseRequestBean();
         requestBean.setTel(tel);
         requestBean.setPassword(EncryptUtils.encryptMD5ToString(password));
+        requestBean.setDevice(DeviceUtils.getModel());
         requestBean.setClientid(SPUtils.getInstance().getString(Constant.DEVICE_TOKEN));
         // 通过Gson转为Json格式的字符串
         return new Gson().toJson(requestBean);

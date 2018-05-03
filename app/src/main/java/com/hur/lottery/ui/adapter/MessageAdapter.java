@@ -66,6 +66,12 @@ public class MessageAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity, B
             // 第一层级
             case TYPE_LEVEL_HEADER:
                 final HeaderBean headerBean = (HeaderBean) item;
+                // 打开的项目箭头变化
+                if (headerBean.isExpanded()) {
+                    helper.getView(R.id.mRightArrow).setBackgroundResource(R.drawable.icon_arrow_down);
+                } else {
+                    helper.getView(R.id.mRightArrow).setBackgroundResource(R.drawable.icon_arrow_right);
+                }
                 // 打开关闭监听
                 helper.getView(R.id.mHeaderLayout).setOnClickListener(new View.OnClickListener() {
                     @Override

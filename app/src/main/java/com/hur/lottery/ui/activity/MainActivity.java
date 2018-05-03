@@ -171,6 +171,10 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         if (isRefresh) {
             // 重置标识位
             isRefresh = false;
+            // 如果Drawer是打开的状态，那么关闭Drawer
+            if (mDrawerLayout.isDrawerOpen(Gravity.START)){
+                mDrawerLayout.closeDrawer(Gravity.START);
+            }
             if (curIndex == 0) {
                 mRefresh.onDataRefresh();
             } else {

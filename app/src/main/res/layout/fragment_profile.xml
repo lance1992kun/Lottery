@@ -1,398 +1,414 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_color_divider"
     >
-    <!--手机号层-->
+    <!--内容层-->
     <RelativeLayout
-        android:id="@+id/mFirstLay"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@android:color/white">
+        android:layout_height="match_parent">
         <!--手机号层-->
         <RelativeLayout
-            android:id="@+id/mPhoneLay"
+            android:id="@+id/mFirstLay"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginStart="20dp">
-
-            <ImageView
-                android:id="@+id/mPhoneIcon"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="5dp"
-                android:background="@drawable/icon_register_phone"
-                android:contentDescription="@string/app_name"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toEndOf="@id/mPhoneIcon"
-                android:gravity="center"
-                android:text="@string/register_phone_hint"/>
-
-            <TextView
-                android:id="@+id/mPhoneText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="20dp"
-                tools:ignore="RelativeOverlap"
-                tools:text="15810476449"/>
-
-            <View
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/white">
+            <!--手机号层-->
+            <RelativeLayout
+                android:id="@+id/mPhoneLay"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_alignParentBottom="true"
-                android:layout_marginTop="5dp"
-                android:background="@color/main_color_divider"/>
-        </RelativeLayout>
-        <!--会员层-->
-        <RelativeLayout
-            android:id="@+id/mMemberLay"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_below="@id/mPhoneLay"
-            android:layout_marginStart="20dp">
+                android:layout_height="40dp"
+                android:layout_marginStart="20dp">
 
-            <ImageView
-                android:id="@+id/mMemberIcon"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="5dp"
-                android:background="@drawable/icon_profile_member"
-                android:contentDescription="@string/app_name"/>
+                <ImageView
+                    android:id="@+id/mPhoneIcon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/icon_register_phone"
+                    android:contentDescription="@string/app_name"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toEndOf="@id/mMemberIcon"
-                android:gravity="center"
-                android:text="@string/profile_member"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/mPhoneIcon"
+                    android:gravity="center"
+                    android:text="@string/register_phone_hint"/>
 
-            <TextView
-                android:id="@+id/mMemberText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="20dp"
-                tools:ignore="RelativeOverlap"
-                tools:text="普通会员"/>
+                <TextView
+                    android:id="@+id/mPhoneText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="20dp"
+                    tools:ignore="RelativeOverlap"
+                    tools:text="15810476449"/>
 
-            <View
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/main_color_divider"/>
+            </RelativeLayout>
+            <!--会员层-->
+            <RelativeLayout
+                android:id="@+id/mMemberLay"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_alignParentBottom="true"
-                android:layout_marginTop="5dp"
-                android:background="@color/main_color_divider"/>
+                android:layout_height="40dp"
+                android:layout_below="@id/mPhoneLay"
+                android:layout_marginStart="20dp">
+
+                <ImageView
+                    android:id="@+id/mMemberIcon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/icon_profile_member"
+                    android:contentDescription="@string/app_name"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/mMemberIcon"
+                    android:gravity="center"
+                    android:text="@string/profile_member"/>
+
+                <TextView
+                    android:id="@+id/mMemberText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="20dp"
+                    tools:ignore="RelativeOverlap"
+                    tools:text="普通会员"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/main_color_divider"/>
+            </RelativeLayout>
+            <!--邀请码层-->
+            <RelativeLayout
+                android:id="@+id/mInviteLay"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/mMemberLay"
+                android:layout_marginStart="20dp">
+
+                <ImageView
+                    android:id="@+id/mInviteIcon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/icon_register_invitation"
+                    android:contentDescription="@string/app_name"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/mInviteIcon"
+                    android:gravity="center"
+                    android:text="@string/register_invitation"/>
+
+                <TextView
+                    android:id="@+id/mInviteText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="20dp"
+                    tools:ignore="RelativeOverlap"
+                    tools:text="邀请码"/>
+
+            </RelativeLayout>
         </RelativeLayout>
-        <!--邀请码层-->
-        <RelativeLayout
-            android:id="@+id/mInviteLay"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_below="@id/mMemberLay"
-            android:layout_marginStart="20dp">
-
-            <ImageView
-                android:id="@+id/mInviteIcon"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="5dp"
-                android:background="@drawable/icon_register_invitation"
-                android:contentDescription="@string/app_name"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toEndOf="@id/mInviteIcon"
-                android:gravity="center"
-                android:text="@string/register_invitation"/>
-
-            <TextView
-                android:id="@+id/mInviteText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="20dp"
-                tools:ignore="RelativeOverlap"
-                tools:text="邀请码"/>
-
-        </RelativeLayout>
-    </RelativeLayout>
-    <!--设置层-->
-    <RelativeLayout
-        android:id="@+id/mSecondLay"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/mFirstLay"
-        android:layout_marginTop="10dp"
-        android:background="@android:color/white">
         <!--设置层-->
         <RelativeLayout
-            android:id="@+id/mSettingLay"
+            android:id="@+id/mSecondLay"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginStart="20dp">
-
-            <ImageView
-                android:id="@+id/mSettingIcon"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="5dp"
-                android:background="@drawable/icon_profile_setting"
-                android:contentDescription="@string/app_name"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toEndOf="@id/mSettingIcon"
-                android:gravity="center"
-                android:text="@string/profile_setting"/>
-
-            <View
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mFirstLay"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/white">
+            <!--设置层-->
+            <RelativeLayout
+                android:id="@+id/mSettingLay"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_alignParentBottom="true"
-                android:layout_marginTop="5dp"
-                android:background="@color/main_color_divider"/>
+                android:layout_height="40dp"
+                android:layout_marginStart="20dp">
+
+                <ImageView
+                    android:id="@+id/mSettingIcon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/icon_profile_setting"
+                    android:contentDescription="@string/app_name"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/mSettingIcon"
+                    android:gravity="center"
+                    android:text="@string/profile_setting"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/main_color_divider"/>
+            </RelativeLayout>
+            <!--极限通知层-->
+            <RelativeLayout
+                android:id="@+id/mLimitLay"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/mSettingLay"
+                android:layout_marginStart="20dp">
+
+                <ImageView
+                    android:id="@+id/mLimitIcon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/icon_profile_setting"
+                    android:contentDescription="@string/app_name"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/mLimitIcon"
+                    android:gravity="center"
+                    android:text="@string/profile_limit"/>
+
+                <TextView
+                    android:id="@+id/mLimitText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="20dp"
+                    tools:ignore="RelativeOverlap"
+                    tools:text="17"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/main_color_divider"/>
+            </RelativeLayout>
+            <!--超大极限层-->
+            <RelativeLayout
+                android:id="@+id/mBigLimitLay"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/mLimitLay"
+                android:layout_marginStart="20dp">
+
+                <ImageView
+                    android:id="@+id/mBigLimitIcon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/icon_profile_setting"
+                    android:contentDescription="@string/app_name"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/mBigLimitIcon"
+                    android:gravity="center"
+                    android:text="@string/profile_big_limit"/>
+
+                <TextView
+                    android:id="@+id/mBigLimitText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="20dp"
+                    tools:ignore="RelativeOverlap"
+                    tools:text="17"/>
+
+            </RelativeLayout>
         </RelativeLayout>
-        <!--极限通知层-->
+        <!--分享、关于、充值层-->
         <RelativeLayout
-            android:id="@+id/mLimitLay"
+            android:id="@+id/mThirdLay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mSecondLay"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/white">
+            <!--分享层-->
+            <RelativeLayout
+                android:id="@+id/mShareLay"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="20dp">
+
+                <ImageView
+                    android:id="@+id/mShareIcon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/icon_profile_share"
+                    android:contentDescription="@string/app_name"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/mShareIcon"
+                    android:gravity="center"
+                    android:text="@string/profile_share"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/main_color_divider"/>
+            </RelativeLayout>
+            <!--关于层-->
+            <RelativeLayout
+                android:id="@+id/mAboutLay"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/mShareLay"
+                android:layout_marginStart="20dp">
+
+                <ImageView
+                    android:id="@+id/mAboutIcon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/icon_profile_about"
+                    android:contentDescription="@string/app_name"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/mAboutIcon"
+                    android:gravity="center"
+                    android:text="@string/profile_about"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/main_color_divider"/>
+            </RelativeLayout>
+            <!--续费入口-->
+            <RelativeLayout
+                android:id="@+id/mUserChargeLay"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/mAboutLay"
+                android:layout_marginStart="20dp">
+
+                <ImageView
+                    android:id="@+id/mChargeIcon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/icon_profile_charge"
+                    android:contentDescription="@string/app_name"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/mChargeIcon"
+                    android:gravity="center"
+                    android:text="@string/profile_charge"/>
+            </RelativeLayout>
+        </RelativeLayout>
+        <!--版本层-->
+        <RelativeLayout
+            android:id="@+id/mVerLay"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_below="@id/mSettingLay"
-            android:layout_marginStart="20dp">
+            android:layout_below="@id/mThirdLay"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/white"
+            android:paddingEnd="0dp"
+            android:paddingStart="20dp">
 
             <ImageView
-                android:id="@+id/mLimitIcon"
+                android:id="@+id/mVerIcon"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="5dp"
-                android:background="@drawable/icon_profile_setting"
+                android:background="@drawable/icon_profile_version"
                 android:contentDescription="@string/app_name"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_toEndOf="@id/mLimitIcon"
+                android:layout_toEndOf="@id/mVerIcon"
                 android:gravity="center"
-                android:text="@string/profile_limit"/>
+                android:text="@string/profile_version"/>
 
             <TextView
-                android:id="@+id/mLimitText"
+                android:id="@+id/mVersionText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="20dp"
                 tools:ignore="RelativeOverlap"
-                tools:text="17"/>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_alignParentBottom="true"
-                android:layout_marginTop="5dp"
-                android:background="@color/main_color_divider"/>
+                tools:text="1.0.3"/>
         </RelativeLayout>
-        <!--超大极限层-->
-        <RelativeLayout
-            android:id="@+id/mBigLimitLay"
+        <!--退出登录按钮-->
+        <Button
+            android:id="@+id/mExitBtn"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_below="@id/mLimitLay"
-            android:layout_marginStart="20dp">
-
-            <ImageView
-                android:id="@+id/mBigLimitIcon"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="5dp"
-                android:background="@drawable/icon_profile_setting"
-                android:contentDescription="@string/app_name"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toEndOf="@id/mBigLimitIcon"
-                android:gravity="center"
-                android:text="@string/profile_big_limit"/>
-
-            <TextView
-                android:id="@+id/mBigLimitText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="20dp"
-                tools:ignore="RelativeOverlap"
-                tools:text="17"/>
-
-        </RelativeLayout>
+            android:layout_below="@id/mVerLay"
+            android:layout_margin="20dp"
+            android:background="@drawable/shape_exit_btn"
+            android:text="@string/profile_exit"
+            android:textColor="@android:color/white"/>
     </RelativeLayout>
-    <!--分享、关于、充值层-->
-    <RelativeLayout
-        android:id="@+id/mThirdLay"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/mSecondLay"
-        android:layout_marginTop="10dp"
-        android:background="@android:color/white">
-        <!--分享层-->
-        <RelativeLayout
-            android:id="@+id/mShareLay"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginStart="20dp">
-
-            <ImageView
-                android:id="@+id/mShareIcon"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="5dp"
-                android:background="@drawable/icon_profile_share"
-                android:contentDescription="@string/app_name"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toEndOf="@id/mShareIcon"
-                android:gravity="center"
-                android:text="@string/profile_share"/>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_alignParentBottom="true"
-                android:layout_marginTop="5dp"
-                android:background="@color/main_color_divider"/>
-        </RelativeLayout>
-        <!--关于层-->
-        <RelativeLayout
-            android:id="@+id/mAboutLay"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_below="@id/mShareLay"
-            android:layout_marginStart="20dp">
-
-            <ImageView
-                android:id="@+id/mAboutIcon"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="5dp"
-                android:background="@drawable/icon_profile_about"
-                android:contentDescription="@string/app_name"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toEndOf="@id/mAboutIcon"
-                android:gravity="center"
-                android:text="@string/profile_about"/>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_alignParentBottom="true"
-                android:layout_marginTop="5dp"
-                android:background="@color/main_color_divider"/>
-        </RelativeLayout>
-        <!--续费入口-->
-        <RelativeLayout
-            android:id="@+id/mUserChargeLay"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_below="@id/mAboutLay"
-            android:layout_marginStart="20dp">
-
-            <ImageView
-                android:id="@+id/mChargeIcon"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="5dp"
-                android:background="@drawable/icon_profile_charge"
-                android:contentDescription="@string/app_name"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toEndOf="@id/mChargeIcon"
-                android:gravity="center"
-                android:text="@string/profile_charge"/>
-        </RelativeLayout>
-    </RelativeLayout>
-    <!--版本层-->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_below="@id/mThirdLay"
-        android:layout_marginTop="10dp"
-        android:background="@android:color/white"
-        android:paddingEnd="0dp"
-        android:paddingStart="20dp">
-
-        <ImageView
-            android:id="@+id/mVerIcon"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="5dp"
-            android:background="@drawable/icon_profile_version"
-            android:contentDescription="@string/app_name"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toEndOf="@id/mVerIcon"
-            android:gravity="center"
-            android:text="@string/profile_version"/>
-
-        <TextView
-            android:id="@+id/mVersionText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="20dp"
-            tools:ignore="RelativeOverlap"
-            tools:text="1.0.3"/>
-    </RelativeLayout>
-</RelativeLayout>
+</ScrollView>

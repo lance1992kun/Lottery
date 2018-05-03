@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.SPUtils;
 import com.hur.lottery.R;
@@ -13,6 +14,7 @@ import com.hur.lottery.entity.Constant;
 import com.hur.lottery.enums.SettingType;
 import com.hur.lottery.net.HttpUrl;
 import com.hur.lottery.net.NetCallBack;
+import com.hur.lottery.ui.activity.LoginActivity;
 import com.hur.lottery.utils.RequestHelper;
 import com.hur.lottery.widget.ChargeDialog;
 import com.hur.lottery.widget.SettingDialog;
@@ -75,6 +77,7 @@ public class ProfileFragment extends BaseFragment {
         view.findViewById(R.id.mLimitLay).setOnClickListener(this);
         view.findViewById(R.id.mBigLimitLay).setOnClickListener(this);
         view.findViewById(R.id.mUserChargeLay).setOnClickListener(this);
+        view.findViewById(R.id.mExitBtn).setOnClickListener(this);
     }
 
     @Override
@@ -96,12 +99,15 @@ public class ProfileFragment extends BaseFragment {
     @Override
     public void onWidgetClick(View view) {
         switch (view.getId()) {
+            // 极限通知
             case R.id.mLimitLay:
                 showSettingDialog(SettingType.TYPE_LIMIT);
                 break;
+            // 超大极限
             case R.id.mBigLimitLay:
                 showSettingDialog(SettingType.TYPE_BIG_LIMIT);
                 break;
+            // 用户充值
             case R.id.mUserChargeLay:
                 if (chargeDialog != null) {
                     chargeDialog.dismiss();
@@ -115,6 +121,13 @@ public class ProfileFragment extends BaseFragment {
                     }
                 });
                 chargeDialog.show(getFragmentManager(), null);
+                break;
+            // 退出登录
+            case R.id.mExitBtn:
+                SPUtils.getInstance().put(Constant.USER_ACCOUNT, "");
+                SPUtils.getInstance().put(Constant.USER_PASSWORD, "");
+                ActivityUtils.startActivity(LoginActivity.class);
+                ActivityUtils.finishActivity(getActivity());
                 break;
             default:
                 break;
