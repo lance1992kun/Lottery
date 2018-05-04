@@ -35,6 +35,20 @@ public class HttpRequest {
     }
 
     /**
+     * 登出操作
+     *
+     * @return 登出结果
+     */
+    public static Observable<BaseResponse<String>> logout() {
+        return OkGo.<BaseResponse<String>>post(HttpUrl.USER_LOGOUT)
+                .headers("token", SPUtils.getInstance().getString(Constant.USER_TOKEN))
+                .upJson(RequestHelper.getCodeBody(
+                        SPUtils.getInstance().getString(Constant.USER_ACCOUNT)))
+                .converter(new JsonConvert<BaseResponse<String>>())
+                .adapt(new ObservableBody<BaseResponse<String>>());
+    }
+
+    /**
      * 获取手机验证码
      *
      * @param tel 手机号
@@ -76,6 +90,20 @@ public class HttpRequest {
                 .headers("token", SPUtils.getInstance().getString(Constant.USER_TOKEN))
                 .upJson(RequestHelper.getDataBody(type,
                         SPUtils.getInstance().getInt(Constant.LIMIT_COUNT, 13)))
+                .converter(new JsonConvert<BaseResponse<String>>())
+                .adapt(new ObservableBody<BaseResponse<String>>());
+    }
+
+    /**
+     * 获取超大极限
+     *
+     * @return 超大极限
+     */
+    public static Observable<BaseResponse<String>> getOrderLimit() {
+        return OkGo.<BaseResponse<String>>post(HttpUrl.GET_ORDER_LIMIT)
+                .headers("token", SPUtils.getInstance().getString(Constant.USER_TOKEN))
+                .upJson(RequestHelper.getLimitBody(
+                        SPUtils.getInstance().getInt(Constant.BIG_LIMIT_COUNT, 23)))
                 .converter(new JsonConvert<BaseResponse<String>>())
                 .adapt(new ObservableBody<BaseResponse<String>>());
     }

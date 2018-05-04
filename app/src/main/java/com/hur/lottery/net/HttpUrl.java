@@ -39,4 +39,8 @@ public final class HttpUrl {
      * 用户登录
      */
     public static final String USER_LOGIN = BASE_URL + "api/user/login";
+    /**
+     * 用户登出
+     */
+    public static final String USER_LOGOUT = BASE_URL + "api/user/logout";
 }

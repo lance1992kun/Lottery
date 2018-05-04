@@ -1,6 +1,7 @@
 package com.hur.lottery.ui.adapter;
 
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
@@ -69,8 +70,12 @@ public class MessageAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity, B
                 // 打开的项目箭头变化
                 if (headerBean.isExpanded()) {
                     helper.getView(R.id.mRightArrow).setBackgroundResource(R.drawable.icon_arrow_down);
+                    helper.getView(R.id.mHeaderLayout).setBackgroundColor(
+                            mContext.getResources().getColor(R.color.main_color_divider));
                 } else {
                     helper.getView(R.id.mRightArrow).setBackgroundResource(R.drawable.icon_arrow_right);
+                    helper.getView(R.id.mHeaderLayout).setBackgroundColor(
+                            mContext.getResources().getColor(android.R.color.white));
                 }
                 // 打开关闭监听
                 helper.getView(R.id.mHeaderLayout).setOnClickListener(new View.OnClickListener() {
@@ -80,10 +85,14 @@ public class MessageAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity, B
                         int position = helper.getAdapterPosition();
                         // 根据状态开关
                         if (headerBean.isExpanded()) {
+                            // 关闭Header
                             collapse(position, false);
                         } else {
+                            // 展开Header
                             expand(position, false);
+                            // 记录当前展开的Header
                             currentHeaderBean = headerBean;
+                            // 关闭除当前Header以外的所有Header
                             collapseAll();
                         }
                     }
@@ -113,5 +122,21 @@ public class MessageAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity, B
                 collapse(i, false);
             }
         }
+        // 滑动到该位置
+        // showSection();
     }
+
+    /**
+     * 显示当前的Header
+     */
+    private void showSection() {
+        int index = 0;
+        if (currentHeaderBean != null) {
+            index = mData.indexOf(currentHeaderBean);
+        }
+        LinearLayoutManager manager = (LinearLayoutManager) getRecyclerView().getLayoutManager();
+        manager.scrollToPositionWithOffset(index, 0);
+        manager.setStackFromEnd(true);
+    }
+
 }

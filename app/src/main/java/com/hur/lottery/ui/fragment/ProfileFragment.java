@@ -1,5 +1,6 @@
 package com.hur.lottery.ui.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -7,20 +8,28 @@ import android.widget.TextView;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.SPUtils;
+import com.blankj.utilcode.util.ToastUtils;
+import com.hur.lottery.LotteryApp;
 import com.hur.lottery.R;
 import com.hur.lottery.base.BaseFragment;
 import com.hur.lottery.entity.BaseResponse;
 import com.hur.lottery.entity.Constant;
 import com.hur.lottery.enums.SettingType;
+import com.hur.lottery.net.HttpRequest;
 import com.hur.lottery.net.HttpUrl;
 import com.hur.lottery.net.NetCallBack;
 import com.hur.lottery.ui.activity.LoginActivity;
 import com.hur.lottery.utils.RequestHelper;
+import com.hur.lottery.utils.RxThreadHelper;
 import com.hur.lottery.widget.ChargeDialog;
 import com.hur.lottery.widget.SettingDialog;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.model.Response;
 import com.lzy.okgo.request.base.Request;
+
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 
 /**
  * <pre>
@@ -124,10 +133,7 @@ public class ProfileFragment extends BaseFragment {
                 break;
             // 退出登录
             case R.id.mExitBtn:
-                SPUtils.getInstance().put(Constant.USER_ACCOUNT, "");
-                SPUtils.getInstance().put(Constant.USER_PASSWORD, "");
-                ActivityUtils.startActivity(LoginActivity.class);
-                ActivityUtils.finishActivity(getActivity());
+                logout();
                 break;
             default:
                 break;
@@ -199,6 +205,53 @@ public class ProfileFragment extends BaseFragment {
                         LogUtils.e("code--->" + response.body().getCode() + "\n" +
                                 "msg--->" + response.body().getMsg() + "\n" +
                                 "data--->" + response.body().getData());
+                    }
+                });
+    }
+
+    /**
+     * 退出登录
+     */
+    private void logout() {
+        HttpRequest.logout()
+                .compose(RxThreadHelper.<BaseResponse<String>>onNetWork())
+                .doOnSubscribe(new Consumer<Disposable>() {
+                    @Override
+                    public void accept(Disposable disposable) throws Exception {
+                        showLoading();
+                    }
+                })
+                .subscribe(new Observer<BaseResponse<String>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(BaseResponse<String> stringBaseResponse) {
+                        // 登出成功
+                        if (stringBaseResponse.getCode() == 1) {
+                            // 清除登录状态并跳转到登录界面
+                            LotteryApp.getInstance().setLogin(false);
+                            Intent mIntent = new Intent(getActivity(), LoginActivity.class);
+                            mIntent.putExtra(Constant.IS_LOGOUT, true);
+                            ActivityUtils.startActivity(mIntent);
+                            ActivityUtils.finishActivity(getActivity());
+                        }
+                        // 登出失败
+                        else {
+                            ToastUtils.showShort(stringBaseResponse.getMsg());
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        dismissLoading();
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        dismissLoading();
                     }
                 });
     }

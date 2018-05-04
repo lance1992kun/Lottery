@@ -9,7 +9,6 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
@@ -20,21 +19,20 @@ import com.google.gson.JsonParser;
 import com.hur.lottery.R;
 import com.hur.lottery.base.BaseFragment;
 import com.hur.lottery.entity.BaseResponse;
-import com.hur.lottery.entity.Constant;
 import com.hur.lottery.entity.DataBean;
 import com.hur.lottery.entity.HeaderBean;
 import com.hur.lottery.entity.SubBean;
-import com.hur.lottery.net.HttpUrl;
-import com.hur.lottery.net.NetCallBack;
+import com.hur.lottery.net.HttpRequest;
 import com.hur.lottery.ui.adapter.MessageAdapter;
-import com.hur.lottery.utils.RequestHelper;
+import com.hur.lottery.utils.RxThreadHelper;
 import com.hur.lottery.widget.HorizontalDivider;
-import com.lzy.okgo.OkGo;
-import com.lzy.okgo.model.Response;
-import com.lzy.okgo.request.base.Request;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 
 /**
  * <pre>
@@ -99,20 +97,39 @@ public class LimitFragment extends BaseFragment {
         data.clear();
         mResource.clear();
         // 进行网络请求
-        OkGo.<BaseResponse<String>>post(HttpUrl.GET_ORDER_LIMIT)
-                .tag(this)
-                .headers("token", SPUtils.getInstance().getString(Constant.USER_TOKEN))
-                .upJson(RequestHelper.getLimitBody(
-                        SPUtils.getInstance().getInt(Constant.BIG_LIMIT_COUNT, 23)))
-                .execute(new NetCallBack<BaseResponse<String>>() {
+        HttpRequest.getOrderLimit()
+                .compose(RxThreadHelper.<BaseResponse<String>>onNetWork())
+                .doOnSubscribe(new Consumer<Disposable>() {
                     @Override
-                    public void onStart(Request<BaseResponse<String>, ? extends Request> request) {
-                        super.onStart(request);
+                    public void accept(Disposable disposable) {
                         showLoading();
+                    }
+                })
+                .subscribe(new Observer<BaseResponse<String>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
                     }
 
                     @Override
-                    public void onError(Response<BaseResponse<String>> response) {
+                    public void onNext(BaseResponse<String> stringBaseResponse) {
+                        // 停止刷新
+                        if (mSwipeRefreshLayout.isRefreshing()) {
+                            mSwipeRefreshLayout.setRefreshing(false);
+                        }
+                        // 将联网获得的数据添加到列表中
+                        if (stringBaseResponse.getCode() == 1) {
+                            // 设置数据
+                            setData(stringBaseResponse.getData());
+                        } else {
+                            ToastUtils.showShort(stringBaseResponse.getMsg());
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        // 消失对话框
+                        dismissLoading();
                         // 停止刷新
                         if (mSwipeRefreshLayout.isRefreshing()) {
                             mSwipeRefreshLayout.setRefreshing(false);
@@ -122,23 +139,12 @@ public class LimitFragment extends BaseFragment {
                     }
 
                     @Override
-                    public void onFinish() {
-                        super.onFinish();
+                    public void onComplete() {
+                        // 消失对话框
                         dismissLoading();
-                    }
-
-                    @Override
-                    public void onSuccess(Response<BaseResponse<String>> response) {
                         // 停止刷新
                         if (mSwipeRefreshLayout.isRefreshing()) {
                             mSwipeRefreshLayout.setRefreshing(false);
-                        }
-                        // 将联网获得的数据添加到列表中
-                        if (response.body().getCode() == 1) {
-                            // 设置数据
-                            setData(response.body().getData());
-                        } else {
-                            ToastUtils.showShort(response.body().getMsg());
                         }
                     }
                 });
@@ -217,7 +223,7 @@ public class LimitFragment extends BaseFragment {
                 .inflate(R.layout.layout_empty_view, (ViewGroup) mListView.getParent(), false);
         mEmptyView.setOnClickListener(this);
         // 设置空布局
-        mAdapter.setEmptyView(mEmptyView);
+        mAdapter.bindToRecyclerView(mListView);
         // 设置适配器
         mListView.setAdapter(mAdapter);
         HorizontalDivider mDivider = new HorizontalDivider

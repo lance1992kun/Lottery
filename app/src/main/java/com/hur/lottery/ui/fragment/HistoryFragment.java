@@ -229,7 +229,7 @@ public class HistoryFragment extends BaseFragment {
         // 设置空布局
         mAdapter.setEmptyView(mEmptyView);
         // 设置适配器
-        mListView.setAdapter(mAdapter);
+        mAdapter.bindToRecyclerView(mListView);
         HorizontalDivider mDivider = new HorizontalDivider
                 .Builder(mActivity)
                 .color(Color.GRAY)

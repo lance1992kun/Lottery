@@ -22,6 +22,10 @@ public class Constant {
      */
     public static final String IS_NEED_REFRESH = "IS_NEED_REFRESH";
     /**
+     * 是否是登出
+     */
+    public static final String IS_LOGOUT = "IS_LOGOUT";
+    /**
      * 推送服务唯一标识
      */
     public static final String DEVICE_TOKEN = "DEVICE_TOKEN";

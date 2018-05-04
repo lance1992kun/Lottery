@@ -9,6 +9,7 @@ import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.RegexUtils;
 import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.ToastUtils;
+import com.hur.lottery.LotteryApp;
 import com.hur.lottery.R;
 import com.hur.lottery.base.BaseActivity;
 import com.hur.lottery.entity.BaseResponse;
@@ -40,10 +41,16 @@ public class LoginActivity extends BaseActivity {
      * 密码输入框
      */
     private TextInputEditText mPassWordInput;
+    /**
+     * 是否是登出过来的
+     */
+    private boolean isLogout = false;
 
     @Override
     public void initData(Bundle bundle) {
-
+        if (bundle != null) {
+            isLogout = bundle.getBoolean(Constant.IS_LOGOUT, false);
+        }
     }
 
     @Override
@@ -69,9 +76,11 @@ public class LoginActivity extends BaseActivity {
         String password = SPUtils.getInstance().getString(Constant.USER_PASSWORD);
         // 存在的话进行自动登录
         if (!TextUtils.isEmpty(tel) && !TextUtils.isEmpty(password)) {
-            doLogin(tel, password);
             mPhoneInput.setText(tel);
             mPassWordInput.setText(password);
+            if (!isLogout) {
+                doLogin(tel, password);
+            }
         }
     }
 
@@ -135,6 +144,8 @@ public class LoginActivity extends BaseActivity {
                     @Override
                     public void onNext(BaseResponse<String> result) {
                         if (result.getCode() == 1) {
+                            // 保存登录状态
+                            LotteryApp.getInstance().setLogin(true);
                             // 保存Token到本地
                             SPUtils.getInstance().put(
                                     Constant.USER_TOKEN, result.getData());

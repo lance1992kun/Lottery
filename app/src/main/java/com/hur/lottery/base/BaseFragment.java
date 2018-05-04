@@ -156,15 +156,15 @@ public abstract class BaseFragment extends Fragment
      * @return 最大历史遗漏
      */
     protected String getMaxString(List<DataBean.MaxListBean> listBeen) {
-        String result = "";
+        StringBuilder result = new StringBuilder();
         for (int i = 0; i < listBeen.size(); i++) {
             DataBean.MaxListBean maxListBean = listBeen.get(i);
-            result += maxListBean.getKey() + "=" + maxListBean.getVal();
+            result.append(maxListBean.getKey()).append("=").append(maxListBean.getVal());
             if (i < listBeen.size() - 1) {
-                result += ",";
+                result.append(",");
             }
         }
-        return result;
+        return result.toString();
     }
 
     /**
@@ -174,15 +174,15 @@ public abstract class BaseFragment extends Fragment
      * @return 历史遗漏
      */
     protected String getHisString(List<DataBean.HisListBean> hisListBeen) {
-        String result = "";
+        StringBuilder result = new StringBuilder();
         for (int i = 0; i < hisListBeen.size(); i++) {
             DataBean.HisListBean maxListBean = hisListBeen.get(i);
-            result += maxListBean.getKey() + "=" + maxListBean.getVal();
+            result.append(maxListBean.getKey()).append("=").append(maxListBean.getVal());
             if (i < hisListBeen.size() - 1) {
-                result += ",";
+                result.append(",");
             }
         }
-        return result;
+        return result.toString();
     }
 
     /**

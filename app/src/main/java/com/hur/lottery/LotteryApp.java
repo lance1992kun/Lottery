@@ -5,7 +5,6 @@ import com.hur.lottery.base.BaseApplication;
 import com.hur.lottery.entity.Constant;
 import com.hur.lottery.push.CustomNotificationHandler;
 import com.umeng.commonsdk.UMConfigure;
-import com.umeng.message.IUmengCallback;
 import com.umeng.message.IUmengRegisterCallback;
 import com.umeng.message.PushAgent;
 
@@ -24,25 +23,9 @@ public class LotteryApp extends BaseApplication {
      */
     private static LotteryApp sInstance;
     /**
-     * 友盟推送实体类
-     */
-    private PushAgent mPushAgent = null;
-    /**
-     * 用户是否登录
+     * 是否登录
      */
     private boolean isLogin = false;
-    /**
-     * 友盟回调
-     */
-    private IUmengCallback mCallBack = new IUmengCallback() {
-        @Override
-        public void onSuccess() {
-        }
-
-        @Override
-        public void onFailure(String s, String s1) {
-        }
-    };
 
     /**
      * 获取App实例
@@ -72,7 +55,7 @@ public class LotteryApp extends BaseApplication {
         // UMConfigure.DEVICE_TYPE_BOX为盒子，默认为手机
         // 参数3:Push推送业务的secret
         UMConfigure.init(this, UMConfigure.DEVICE_TYPE_PHONE, Constant.PUSH_SECRET);
-        mPushAgent = PushAgent.getInstance(this);
+        PushAgent mPushAgent = PushAgent.getInstance(this);
         // 自定义动作
         CustomNotificationHandler notificationClickHandler = new CustomNotificationHandler();
         // 注册自定义动作
@@ -95,17 +78,21 @@ public class LotteryApp extends BaseApplication {
         });
     }
 
-//    /**
-//     * 关闭推送
-//     */
-//    private void closePush() {
-//        mPushAgent.disable(mCallBack);
-//    }
-//
-//    /**
-//     * 开启推送
-//     */
-//    public void openPush() {
-//        mPushAgent.enable(mCallBack);
-//    }
+    /**
+     * 用户是否登录
+     *
+     * @return 是否登录
+     */
+    public boolean isLogin() {
+        return isLogin;
+    }
+
+    /**
+     * 设置用户登录状态
+     *
+     * @param login 是否登录
+     */
+    public void setLogin(boolean login) {
+        isLogin = login;
+    }
 }
