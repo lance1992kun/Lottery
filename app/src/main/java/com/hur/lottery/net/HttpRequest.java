@@ -107,4 +107,19 @@ public class HttpRequest {
                 .converter(new JsonConvert<BaseResponse<String>>())
                 .adapt(new ObservableBody<BaseResponse<String>>());
     }
+
+    /**
+     * 用户充值
+     *
+     * @param value 充值密码
+     * @return 充值结果
+     */
+    public static Observable<BaseResponse<String>> userCharge(String value) {
+        return OkGo.<BaseResponse<String>>post(HttpUrl.USER_CHARGE)
+                .headers("token", SPUtils.getInstance().getString(Constant.USER_TOKEN))
+                .upJson(RequestHelper.getChargeBody(SPUtils.getInstance().getString(Constant.USER_ACCOUNT)
+                        , value))
+                .converter(new JsonConvert<BaseResponse<String>>())
+                .adapt(new ObservableBody<BaseResponse<String>>());
+    }
 }

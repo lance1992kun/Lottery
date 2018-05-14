@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.blankj.utilcode.util.ActivityUtils;
-import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.hur.lottery.LotteryApp;
@@ -16,16 +15,10 @@ import com.hur.lottery.entity.BaseResponse;
 import com.hur.lottery.entity.Constant;
 import com.hur.lottery.enums.SettingType;
 import com.hur.lottery.net.HttpRequest;
-import com.hur.lottery.net.HttpUrl;
-import com.hur.lottery.net.NetCallBack;
 import com.hur.lottery.ui.activity.LoginActivity;
-import com.hur.lottery.utils.RequestHelper;
 import com.hur.lottery.utils.RxThreadHelper;
 import com.hur.lottery.widget.ChargeDialog;
 import com.hur.lottery.widget.SettingDialog;
-import com.lzy.okgo.OkGo;
-import com.lzy.okgo.model.Response;
-import com.lzy.okgo.request.base.Request;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -179,32 +172,41 @@ public class ProfileFragment extends BaseFragment {
     }
 
     /**
-     * 测试用户充值功能
+     * 用户充值功能
      */
     private void userCharge(String value) {
         // 用户充值
-        OkGo.<BaseResponse<String>>post(HttpUrl.USER_CHARGE)
-                .tag(this)
-                .headers("token", SPUtils.getInstance().getString(Constant.USER_TOKEN))
-                .upJson(RequestHelper.getChargeBody("15810476449", value))
-                .execute(new NetCallBack<BaseResponse<String>>() {
+        HttpRequest.userCharge(value)
+                .compose(RxThreadHelper.<BaseResponse<String>>onNetWork())
+                .doOnSubscribe(new Consumer<Disposable>() {
                     @Override
-                    public void onStart(Request<BaseResponse<String>, ? extends Request> request) {
-                        super.onStart(request);
+                    public void accept(Disposable disposable) throws Exception {
                         showLoading();
+                    }
+                })
+                .subscribe(new Observer<BaseResponse<String>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
                     }
 
                     @Override
-                    public void onFinish() {
-                        super.onFinish();
+                    public void onNext(BaseResponse<String> stringBaseResponse) {
+                        if (stringBaseResponse.getCode() == 1) {
+                            ToastUtils.showShort("充值成功！");
+                        } else {
+                            ToastUtils.showShort(stringBaseResponse.getMsg());
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
                         dismissLoading();
                     }
 
                     @Override
-                    public void onSuccess(Response<BaseResponse<String>> response) {
-                        LogUtils.e("code--->" + response.body().getCode() + "\n" +
-                                "msg--->" + response.body().getMsg() + "\n" +
-                                "data--->" + response.body().getData());
+                    public void onComplete() {
+                        dismissLoading();
                     }
                 });
     }
