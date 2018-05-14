@@ -36,13 +36,37 @@ import io.reactivex.functions.Consumer;
 
 public class ProfileFragment extends BaseFragment {
 
+    /**
+     * 手机号
+     */
     private TextView mPhoneText = null;
+    /**
+     * 会员级别
+     */
     private TextView mMemberText = null;
+    /**
+     * 邀请码
+     */
     private TextView mInviteText = null;
+    /**
+     * 极限数据
+     */
     private TextView mLimitText = null;
+    /**
+     * 最大极限数据
+     */
     private TextView mBigLimitText = null;
+    /**
+     * 版本号
+     */
     private TextView mVersionText = null;
+    /**
+     * 设置通知对话框
+     */
     private SettingDialog settingDialog = null;
+    /**
+     * 充值对话框
+     */
     private ChargeDialog chargeDialog = null;
 
     /**
@@ -84,18 +108,8 @@ public class ProfileFragment extends BaseFragment {
 
     @Override
     public void doBusiness() {
-        // 登录的手机号
-        mPhoneText.setText(SPUtils.getInstance().getString(Constant.USER_ACCOUNT));
-        // 极限通知
-        String limit = SPUtils.getInstance().getInt(Constant.LIMIT_COUNT, 13) + "";
-        mLimitText.setText(limit);
-        // 超大极限
-        String bigLimit = SPUtils.getInstance().getInt(Constant.BIG_LIMIT_COUNT, 23) + "";
-        mBigLimitText.setText(bigLimit);
-        // 目前写死
-        mMemberText.setText("普通会员");
-        mInviteText.setText("邀请码");
-        mVersionText.setText("1.0.0");
+        // 设置数据
+        setData();
     }
 
     @Override
@@ -258,8 +272,36 @@ public class ProfileFragment extends BaseFragment {
                 });
     }
 
+    /**
+     * 根据当前登录用户设置数据
+     */
+    private void setData() {
+        // 登录的手机号
+        mPhoneText.setText(SPUtils.getInstance().getString(Constant.USER_ACCOUNT));
+        // 极限通知
+        String limit = SPUtils.getInstance().getInt(Constant.LIMIT_COUNT, 13) + "";
+        mLimitText.setText(limit);
+        // 超大极限
+        String bigLimit = SPUtils.getInstance().getInt(Constant.BIG_LIMIT_COUNT, 23) + "";
+        mBigLimitText.setText(bigLimit);
+        // 目前写死
+        mMemberText.setText("普通会员");
+        mInviteText.setText("邀请码");
+        mVersionText.setText("1.0.0");
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (!hidden) {
+            // 设置数据
+            setData();
+        }
+    }
+
     @Override
     public void onDataRefresh() {
 
     }
+
 }
