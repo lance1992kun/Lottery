@@ -8,6 +8,8 @@ import com.umeng.commonsdk.UMConfigure;
 import com.umeng.message.IUmengRegisterCallback;
 import com.umeng.message.PushAgent;
 
+import org.android.agoo.huawei.HuaWeiRegister;
+
 /**
  * <pre>
  *   @author  : syk
@@ -76,6 +78,8 @@ public class LotteryApp extends BaseApplication {
                 SPUtils.getInstance().put(Constant.DEVICE_TOKEN, "");
             }
         });
+        // 注册华为推送
+        HuaWeiRegister.register(this);
     }
 
     /**

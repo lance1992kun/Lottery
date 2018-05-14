@@ -122,6 +122,7 @@ public class HistoryFragment extends BaseFragment {
                             // 设置数据
                             setData(response.getData());
                         } else {
+                            setData(null);
                             ToastUtils.showShort(response.getMsg());
                         }
                     }
@@ -140,6 +141,10 @@ public class HistoryFragment extends BaseFragment {
                     @Override
                     public void onComplete() {
                         dismissLoading();
+                        // 停止刷新
+                        if (mSwipeRefreshLayout.isRefreshing()) {
+                            mSwipeRefreshLayout.setRefreshing(false);
+                        }
                     }
                 });
     }

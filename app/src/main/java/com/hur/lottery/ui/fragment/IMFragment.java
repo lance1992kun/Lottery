@@ -122,6 +122,7 @@ public class IMFragment extends BaseFragment {
                             // 设置数据
                             setData(stringBaseResponse.getData());
                         } else {
+                            setData(null);
                             ToastUtils.showShort(stringBaseResponse.getMsg());
                         }
                     }
@@ -192,8 +193,8 @@ public class IMFragment extends BaseFragment {
             mResource.add(headerBean);
         }
         // 加入数据
+        mAdapter.setNewData(mResource);
         if (mResource.size() > 0) {
-            mAdapter.setNewData(mResource);
             mAdapter.expand(0);
             // 滑动到第一个
             mListView.smoothScrollToPosition(0);

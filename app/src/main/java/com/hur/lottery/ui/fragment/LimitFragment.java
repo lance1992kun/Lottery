@@ -122,6 +122,7 @@ public class LimitFragment extends BaseFragment {
                             // 设置数据
                             setData(stringBaseResponse.getData());
                         } else {
+                            setData(null);
                             ToastUtils.showShort(stringBaseResponse.getMsg());
                         }
                     }
@@ -182,8 +183,8 @@ public class LimitFragment extends BaseFragment {
             mResource.add(headerBean);
         }
         // 加入数据
+        mAdapter.setNewData(mResource);
         if (mResource.size() > 0) {
-            mAdapter.setNewData(mResource);
             mAdapter.expand(0);
             // 滑动到第一个
             mListView.smoothScrollToPosition(0);
@@ -223,9 +224,9 @@ public class LimitFragment extends BaseFragment {
                 .inflate(R.layout.layout_empty_view, (ViewGroup) mListView.getParent(), false);
         mEmptyView.setOnClickListener(this);
         // 设置空布局
-        mAdapter.bindToRecyclerView(mListView);
+        mAdapter.setEmptyView(mEmptyView);
         // 设置适配器
-        mListView.setAdapter(mAdapter);
+        mAdapter.bindToRecyclerView(mListView);
         HorizontalDivider mDivider = new HorizontalDivider
                 .Builder(mActivity)
                 .color(Color.GRAY)
