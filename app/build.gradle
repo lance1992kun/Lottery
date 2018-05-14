@@ -44,6 +44,10 @@ dependencies {
     compile 'com.umeng.sdk:push:4.1.0'
     // 友盟统计
     compile 'com.umeng.sdk:analytics:7.5.0'
+    // 小米Push通道
+    compile 'com.umeng.sdk:push-xiaomi:1.0.0'
     // 华为Push通道
     compile 'com.umeng.sdk:push-huawei:1.0.0'
+    // 魅族Push通道
+    compile 'com.umeng.sdk:push-meizu:1.0.0'
 }

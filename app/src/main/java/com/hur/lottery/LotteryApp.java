@@ -9,6 +9,8 @@ import com.umeng.message.IUmengRegisterCallback;
 import com.umeng.message.PushAgent;
 
 import org.android.agoo.huawei.HuaWeiRegister;
+import org.android.agoo.mezu.MeizuRegister;
+import org.android.agoo.xiaomi.MiPushRegistar;
 
 /**
  * <pre>
@@ -78,8 +80,12 @@ public class LotteryApp extends BaseApplication {
                 SPUtils.getInstance().put(Constant.DEVICE_TOKEN, "");
             }
         });
+        // 注册小米推送
+        MiPushRegistar.register(this, "", "");
         // 注册华为推送
         HuaWeiRegister.register(this);
+        // 注册魅族推送
+        MeizuRegister.register(this, "", "");
     }
 
     /**

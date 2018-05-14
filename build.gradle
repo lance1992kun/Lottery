@@ -45,6 +45,6 @@ ext {
 
     // App dependencies
     support_version = '25.3.1'
-    util_version = "1.13.11"
+    util_version = "1.15.0"
     auto_dispose_version = "0.7.0"
 }
