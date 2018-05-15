@@ -121,6 +121,10 @@ public class HistoryFragment extends BaseFragment {
                         if (response.getCode() == 1) {
                             // 设置数据
                             setData(response.getData());
+                        }
+                        // 登陆失效
+                        else if (response.getCode() == 999) {
+                            mActivity.doOffline();
                         } else {
                             setData(null);
                             ToastUtils.showShort(response.getMsg());
