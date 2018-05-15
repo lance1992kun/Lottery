@@ -121,6 +121,10 @@ public class IMFragment extends BaseFragment {
                         if (stringBaseResponse.getCode() == 1) {
                             // 设置数据
                             setData(stringBaseResponse.getData());
+                        }
+                        // 登陆失效
+                        else if (stringBaseResponse.getCode() == 999) {
+                            mActivity.doOffline();
                         } else {
                             setData(null);
                             ToastUtils.showShort(stringBaseResponse.getMsg());

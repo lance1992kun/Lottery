@@ -13,7 +13,6 @@ import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.hur.lottery.entity.Constant;
 import com.hur.lottery.ui.activity.LoginActivity;
@@ -278,10 +277,12 @@ public abstract class BaseActivity extends AppCompatActivity
         public void onReceive(Context context, Intent intent) {
             // 强制下线
             ToastUtils.showShort("登录信息失效，请从新登录！");
-            // 终结所有Activity
-            ActivityUtils.finishAllActivities();
-            // 跳转到登录界面
-            ActivityUtils.startActivity(LoginActivity.class);
+            // 参数
+            Intent mIntent = new Intent(context, LoginActivity.class);
+            mIntent.putExtra(Constant.IS_LOGOUT, true);
+            context.startActivity(mIntent);
+            // 结束当前Activity
+            ((BaseActivity) context).finish();
         }
     }
 }
