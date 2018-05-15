@@ -280,9 +280,8 @@ public abstract class BaseActivity extends AppCompatActivity
             // 参数
             Intent mIntent = new Intent(context, LoginActivity.class);
             mIntent.putExtra(Constant.IS_LOGOUT, true);
+            mIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(mIntent);
-            // 结束当前Activity
-            ((BaseActivity) context).finish();
         }
     }
 }
