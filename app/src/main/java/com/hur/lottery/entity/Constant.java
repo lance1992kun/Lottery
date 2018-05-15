@@ -18,6 +18,14 @@ public class Constant {
      */
     public static final boolean DEBUG = true;
     /**
+     * 默认极限通知
+     */
+    public static final int DEFAULT_LIMIT = 16;
+    /**
+     * 默认超大极限
+     */
+    public static final int DEFAULT_BIG_LIMIT = 24;
+    /**
      * 是否要刷新界面
      */
     public static final String IS_NEED_REFRESH = "IS_NEED_REFRESH";

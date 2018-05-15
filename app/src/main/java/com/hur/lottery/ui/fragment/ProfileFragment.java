@@ -279,10 +279,12 @@ public class ProfileFragment extends BaseFragment {
         // 登录的手机号
         mPhoneText.setText(SPUtils.getInstance().getString(Constant.USER_ACCOUNT));
         // 极限通知
-        String limit = SPUtils.getInstance().getInt(Constant.LIMIT_COUNT, 13) + "";
+        String limit = SPUtils.getInstance().getInt(
+                Constant.LIMIT_COUNT, Constant.DEFAULT_LIMIT) + "";
         mLimitText.setText(limit);
         // 超大极限
-        String bigLimit = SPUtils.getInstance().getInt(Constant.BIG_LIMIT_COUNT, 23) + "";
+        String bigLimit = SPUtils.getInstance().getInt(
+                Constant.BIG_LIMIT_COUNT, Constant.DEFAULT_BIG_LIMIT) + "";
         mBigLimitText.setText(bigLimit);
         // 目前写死
         mMemberText.setText("普通会员");

@@ -14,7 +14,6 @@ import android.widget.RadioGroup;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.FragmentUtils;
 import com.blankj.utilcode.util.ScreenUtils;
-import com.blankj.utilcode.util.ToastUtils;
 import com.hur.lottery.R;
 import com.hur.lottery.base.BaseActivity;
 import com.hur.lottery.entity.Constant;
@@ -50,10 +49,6 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
      * 是否刷新UI
      */
     private boolean isRefresh = false;
-    /**
-     * 上次点击返回键时间
-     */
-    private long lastClick = 0L;
 
     /**
      * 初始化数据
@@ -220,16 +215,6 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
      */
     private void switchFragment(int index) {
         FragmentUtils.showHide(curIndex = index, mFragments);
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (System.currentTimeMillis() - lastClick > 2000) {
-            ToastUtils.showShort("再按一次退出应用");
-            lastClick = System.currentTimeMillis();
-            return;
-        }
-        super.onBackPressed();
     }
 
     @Override

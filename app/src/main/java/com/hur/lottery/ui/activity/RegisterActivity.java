@@ -274,6 +274,11 @@ public class RegisterActivity extends BaseActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        finish();
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         dispose();

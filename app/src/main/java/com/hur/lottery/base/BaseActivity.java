@@ -36,7 +36,6 @@ import static com.hur.lottery.entity.Constant.FAST_CLICK;
  */
 public abstract class BaseActivity extends AppCompatActivity
         implements IBaseView {
-
     /**
      * 当前 Activity 渲染的视图 View
      */
@@ -50,13 +49,17 @@ public abstract class BaseActivity extends AppCompatActivity
      */
     protected BaseActivity mActivity;
     /**
+     * 上次点击返回键时间
+     */
+    private long lastClick = 0L;
+    /**
      * 用来保存View的稀疏数组
      */
     private SparseArray<View> mViews = null;
     /**
      * 上次点击时间
      */
-    private long lastClick = 0;
+    private long lastBtnClick = 0;
     /**
      * 联网转圈圈
      */
@@ -73,6 +76,41 @@ public abstract class BaseActivity extends AppCompatActivity
      * Rx任务管理器
      */
     private CompositeDisposable compositeDisposable;
+
+    @Override
+    public void onBackPressed() {
+        if (System.currentTimeMillis() - lastClick > 2000) {
+            ToastUtils.showShort("再按一次退出应用");
+            lastClick = System.currentTimeMillis();
+            return;
+        }
+        super.onBackPressed();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // 初始化友盟统计
+        MobclickAgent.onPause(this);
+        // 解除广播注册
+        if (mReceiver != null) {
+            mLocalBroadcastManager.unregisterReceiver(mReceiver);
+            mReceiver = null;
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // 初始化友盟统计
+        MobclickAgent.onResume(this);
+        // 初始化下线广播接受者
+        mReceiver = new OfflineReceiver();
+        // 注册广播
+        IntentFilter mIntentFilter = new IntentFilter();
+        mIntentFilter.addAction(Constant.OFF_LINE_BROADCAST);
+        mLocalBroadcastManager.registerReceiver(mReceiver, mIntentFilter);
+    }
 
     /**
      * 将任务添加到管理器中
@@ -136,31 +174,6 @@ public abstract class BaseActivity extends AppCompatActivity
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
-        // 初始化友盟统计
-        MobclickAgent.onPause(this);
-        // 解除广播注册
-        if (mReceiver != null) {
-            mLocalBroadcastManager.unregisterReceiver(mReceiver);
-            mReceiver = null;
-        }
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        // 初始化友盟统计
-        MobclickAgent.onResume(this);
-        // 初始化下线广播接受者
-        mReceiver = new OfflineReceiver();
-        // 注册广播
-        IntentFilter mIntentFilter = new IntentFilter();
-        mIntentFilter.addAction(Constant.OFF_LINE_BROADCAST);
-        mLocalBroadcastManager.registerReceiver(mReceiver, mIntentFilter);
-    }
-
-    @Override
     public void onClick(final View view) {
         if (!isFastClick()) {
             onWidgetClick(view);
@@ -174,8 +187,8 @@ public abstract class BaseActivity extends AppCompatActivity
      */
     private boolean isFastClick() {
         long now = System.currentTimeMillis();
-        if (now - lastClick >= FAST_CLICK) {
-            lastClick = now;
+        if (now - lastBtnClick >= FAST_CLICK) {
+            lastBtnClick = now;
             return false;
         }
         return true;

@@ -89,7 +89,8 @@ public class HttpRequest {
         return OkGo.<BaseResponse<String>>post(HttpUrl.GET_ORDER_DATA)
                 .headers("token", SPUtils.getInstance().getString(Constant.USER_TOKEN))
                 .upJson(RequestHelper.getDataBody(type,
-                        SPUtils.getInstance().getInt(Constant.LIMIT_COUNT, 13)))
+                        SPUtils.getInstance().getInt(
+                                Constant.LIMIT_COUNT, Constant.DEFAULT_LIMIT)))
                 .converter(new JsonConvert<BaseResponse<String>>())
                 .adapt(new ObservableBody<BaseResponse<String>>());
     }
@@ -103,7 +104,8 @@ public class HttpRequest {
         return OkGo.<BaseResponse<String>>post(HttpUrl.GET_ORDER_LIMIT)
                 .headers("token", SPUtils.getInstance().getString(Constant.USER_TOKEN))
                 .upJson(RequestHelper.getLimitBody(
-                        SPUtils.getInstance().getInt(Constant.BIG_LIMIT_COUNT, 23)))
+                        SPUtils.getInstance().getInt(
+                                Constant.BIG_LIMIT_COUNT, Constant.DEFAULT_BIG_LIMIT)))
                 .converter(new JsonConvert<BaseResponse<String>>())
                 .adapt(new ObservableBody<BaseResponse<String>>());
     }
