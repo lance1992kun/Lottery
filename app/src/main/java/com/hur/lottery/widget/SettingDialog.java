@@ -93,8 +93,8 @@ public class SettingDialog extends DialogFragment {
         if (type == SettingType.TYPE_LIMIT) {
             try {
                 int value = Integer.valueOf(number);
-                if (value > 18 || value < 13) {
-                    ToastUtils.showShort("请输入13-18之间的数值");
+                if (value > 18 || value < 6) {
+                    ToastUtils.showShort("请输入6-18之间的数值");
                 } else {
                     // 回调
                     mCallBack.onDismiss(value);

@@ -65,7 +65,6 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         mFragments[0] = IMFragment.newInstance();
         mFragments[1] = HistoryFragment.newInstance();
         mFragments[2] = LimitFragment.newInstance();
-        // mFragments[3] = ProfileFragment.newInstance();
     }
 
     /**
@@ -199,10 +198,6 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
             case R.id.mLimitRb:
                 switchFragment(2);
                 break;
-            // 我的
-//            case R.id.mProfileRb:
-//                switchFragment(3);
-//                break;
             default:
                 break;
         }
