@@ -19,7 +19,6 @@ import com.hur.lottery.base.BaseActivity;
 import com.hur.lottery.entity.Constant;
 import com.hur.lottery.ui.fragment.HistoryFragment;
 import com.hur.lottery.ui.fragment.IMFragment;
-import com.hur.lottery.ui.fragment.LimitFragment;
 import com.hur.lottery.ui.fragment.ProfileFragment;
 
 /**
@@ -40,7 +39,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     /**
      * 界面集合
      */
-    private Fragment[] mFragments = new Fragment[3];
+    private Fragment[] mFragments = new Fragment[2];
     /**
      * 当前下标
      */
@@ -64,7 +63,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         // 初始化各种界面
         mFragments[0] = IMFragment.newInstance();
         mFragments[1] = HistoryFragment.newInstance();
-        mFragments[2] = LimitFragment.newInstance();
+        // mFragments[2] = LimitFragment.newInstance();
     }
 
     /**
@@ -194,10 +193,10 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
             case R.id.mHistoryRb:
                 switchFragment(1);
                 break;
-            // 超大极限
-            case R.id.mLimitRb:
-                switchFragment(2);
-                break;
+//            // 超大极限
+//            case R.id.mLimitRb:
+//                switchFragment(2);
+//                break;
             default:
                 break;
         }
